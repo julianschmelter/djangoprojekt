@@ -1,0 +1,308 @@
+
+{% extends "base.html" %}
+
+{% block title %}KERN UX Demo{% endblock %}
+
+{% block content %}
+
+<p class="kern-preline">Interne UI-Referenz</p>
+<h1 class="kern-heading">KERN UX Demo-Seite</h1>
+<p class="kern-subline">
+    Diese Seite zeigt typische Komponenten und Textrollen des KERN UX Designsystems.
+</p>
+
+<hr>
+
+<section aria-labelledby="text-demo">
+    <h2 id="text-demo" class="kern-heading-medium">Textrollen</h2>
+
+    <p class="kern-preline">Vorzeile / Einordnung</p>
+    <h3 class="kern-title">Titel innerhalb einer Komponente</h3>
+    <p class="kern-subline">Unterzeile mit ergänzender Information</p>
+    <p class="kern-body">
+        Dies ist ein Beispiel für Fließtext. Hier siehst du, wie KERN Typografie und vertikale
+        Abstände bereits über die Textkomponenten mitbringt.
+    </p>
+</section>
+
+<hr>
+
+<section aria-labelledby="button-demo">
+    <h2 id="button-demo" class="kern-heading-medium">Buttons</h2>
+
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <button type="button" class="kern-btn kern-btn--primary">
+            <span class="kern-label">Primäraktion</span>
+        </button>
+
+        <button type="button" class="kern-btn kern-btn--secondary">
+            <span class="kern-label">Sekundäraktion</span>
+        </button>
+
+        <button type="button" class="kern-btn kern-btn--tertiary">
+            <span class="kern-label">Tertiäraktion</span>
+        </button>
+    </div>
+</section>
+
+<hr>
+
+<section aria-labelledby="form-demo">
+    <h2 id="form-demo" class="kern-heading-medium">Formular</h2>
+
+    <form method="post" action="#">
+        {% csrf_token %}
+
+        <div class="kern-form-input">
+            <label class="kern-label" for="familienname">Familienname</label>
+            <input class="kern-form-input__input" id="familienname" name="familienname" type="text">
+        </div>
+
+        <div class="kern-form-input">
+            <label class="kern-label" for="vorname">
+                Vorname <span class="kern-label__optional">- Optional</span>
+            </label>
+            <input class="kern-form-input__input" id="vorname" name="vorname" type="text">
+        </div>
+
+        <div class="kern-form-input">
+            <label class="kern-label" for="email">E-Mail</label>
+            <div class="kern-hint" id="email-hint">
+                Beispiel: name@beispiel.de
+            </div>
+            <input
+                class="kern-form-input__input"
+                id="email"
+                name="email"
+                type="email"
+                aria-describedby="email-hint"
+            >
+        </div>
+
+        <div class="kern-form-input">
+            <label class="kern-label" for="telefon">Telefonnummer</label>
+            <input class="kern-form-input__input" id="telefon" name="telefon" type="tel">
+        </div>
+
+        <div class="kern-form-input">
+            <label class="kern-label" for="bundesland">Bundesland</label>
+            <div class="kern-hint" id="bundesland-hint">
+                Beispiel für ein Select mit wenigen Optionen.
+            </div>
+            <select
+                class="kern-form-input__input"
+                id="bundesland"
+                name="bundesland"
+                aria-describedby="bundesland-hint"
+            >
+                <option value="">Bitte wählen</option>
+                <option>Berlin</option>
+                <option>Hamburg</option>
+                <option>Nordrhein-Westfalen</option>
+                <option>Sachsen</option>
+                <option>Thüringen</option>
+            </select>
+        </div>
+
+        <fieldset class="kern-fieldset">
+            <legend class="kern-label kern-label--large">Meldeadresse</legend>
+            <div class="kern-hint" id="meldeadresse-hint">
+                Bitte wählen Sie genau eine Option.
+            </div>
+
+            <div class="kern-fieldset__body" aria-describedby="meldeadresse-hint">
+                <div class="kern-form-check">
+                    <input class="kern-form-check__radio" id="inland" name="meldeadresse" type="radio">
+                    <label class="kern-label" for="inland">in Deutschland</label>
+                </div>
+
+                <div class="kern-form-check">
+                    <input class="kern-form-check__radio" id="ausland" name="meldeadresse" type="radio">
+                    <label class="kern-label" for="ausland">im Ausland</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="kern-fieldset">
+            <legend class="kern-label kern-label--large">Optionen</legend>
+
+            <div class="kern-fieldset__body">
+                <div class="kern-form-check">
+                    <input class="kern-form-check__checkbox" id="newsletter" name="newsletter" type="checkbox">
+                    <label class="kern-label" for="newsletter">Newsletter abonnieren</label>
+                </div>
+
+                <div class="kern-form-check">
+                    <input class="kern-form-check__checkbox" id="datenschutz" name="datenschutz" type="checkbox">
+                    <label class="kern-label" for="datenschutz">Datenschutzhinweise akzeptieren</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button type="submit" class="kern-btn kern-btn--primary">
+                <span class="kern-label">Formular absenden</span>
+            </button>
+
+            <button type="button" class="kern-btn kern-btn--secondary">
+                <span class="kern-label">Zwischenspeichern</span>
+            </button>
+        </div>
+    </form>
+</section>
+
+<hr>
+
+<section aria-labelledby="accordion-demo">
+    <h2 id="accordion-demo" class="kern-heading-medium">Accordion</h2>
+
+    <details class="kern-accordion" open>
+        <summary class="kern-accordion__header">
+            <span class="kern-title">Wie lange dauert der Prozess?</span>
+        </summary>
+        <section class="kern-accordion__body">
+            <p class="kern-body">
+                In dieser Demo natürlich nur wenige Sekunden. In einer echten Anwendung könnte hier
+                eine Hilfestellung oder FAQ stehen.
+            </p>
+        </section>
+    </details>
+
+    <details class="kern-accordion">
+        <summary class="kern-accordion__header">
+            <span class="kern-title">Welche Unterlagen werden benötigt?</span>
+        </summary>
+        <section class="kern-accordion__body">
+            <p class="kern-body">
+                Zum Beispiel Personalausweis, Aktenzeichen und ggf. Nachweise als PDF.
+            </p>
+        </section>
+    </details>
+</section>
+
+<hr>
+
+<section aria-labelledby="tasklist-demo">
+    <h2 id="tasklist-demo" class="kern-heading-medium">Task List</h2>
+
+    <div class="kern-task-list">
+        <div class="kern-task-list__header">
+            <h3 class="kern-heading-medium">Persönliche Daten</h3>
+        </div>
+
+        <ul class="kern-task-list__list">
+            <li class="kern-task-list__item">
+                <span class="kern-number">1</span>
+                <div class="kern-task-list__title" id="task1-title">
+                    <a href="#" class="kern-link kern-link--stretched" aria-describedby="task1-status">
+                        Angaben zur Person machen
+                    </a>
+                    <div class="kern-task-list__status" id="task1-status">
+                        <span class="kern-badge kern-badge--success">
+                            <span class="kern-icon kern-icon--success kern-icon--sm" aria-hidden="true"></span>
+                            <span class="kern-label kern-label--small">Erledigt</span>
+                        </span>
+                    </div>
+                </div>
+            </li>
+
+            <li class="kern-task-list__item">
+                <span class="kern-number">2</span>
+                <div class="kern-task-list__title" id="task2-title">
+                    <a href="#" class="kern-link kern-link--stretched" aria-describedby="task2-status">
+                        Adresse prüfen
+                    </a>
+                    <div class="kern-task-list__status" id="task2-status">
+                        <span class="kern-badge kern-badge--warning">
+                            <span class="kern-label kern-label--small">Unvollständig</span>
+                        </span>
+                    </div>
+                </div>
+            </li>
+
+            <li class="kern-task-list__item">
+                <span class="kern-number">3</span>
+                <div class="kern-task-list__title" id="task3-title">
+                    <p class="kern-body">Zusammenfassung prüfen</p>
+                    <div class="kern-task-list__status" id="task3-status">
+                        <span class="kern-badge kern-badge--info">
+                            <span class="kern-label kern-label--small">Noch nicht zu bearbeiten</span>
+                        </span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<hr>
+
+<section aria-labelledby="summary-demo">
+    <h2 id="summary-demo" class="kern-heading-medium">Summary</h2>
+
+    <div class="kern-summary">
+        <div class="kern-summary__header">
+            <span class="kern-number">1</span>
+            <h3 class="kern-title kern-title--small">Angaben zur Person</h3>
+        </div>
+
+        <div class="kern-summary__body">
+            <dl class="kern-description-list">
+                <div class="kern-description-list-item">
+                    <dt class="kern-description-list-item__key">Name</dt>
+                    <dd class="kern-description-list-item__value">Max Mustermann</dd>
+                </div>
+
+                <div class="kern-description-list-item">
+                    <dt class="kern-description-list-item__key">E-Mail</dt>
+                    <dd class="kern-description-list-item__value">max@example.org</dd>
+                </div>
+
+                <div class="kern-description-list-item">
+                    <dt class="kern-description-list-item__key">Telefon</dt>
+                    <dd class="kern-description-list-item__value">+49 30 1234567</dd>
+                </div>
+            </dl>
+
+            <div class="kern-summary__actions">
+                <a href="#" class="kern-link">
+                    <span class="kern-icon kern-icon--edit" aria-hidden="true"></span>
+                    Bearbeiten
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr>
+
+<section aria-labelledby="table-demo">
+    <h2 id="table-demo" class="kern-heading-medium">Tabelle</h2>
+
+    <table class="kern-table">
+        <caption class="kern-title">Beispiel-Daten</caption>
+
+        <thead class="kern-table__head">
+            <tr class="kern-table__row">
+                <th scope="col" class="kern-table__header">Leistung</th>
+                <th scope="col" class="kern-table__header">Status</th>
+                <th scope="col" class="kern-table__header kern-table__header--numeric">Betrag</th>
+            </tr>
+        </thead>
+
+        <tbody class="kern-table__body">
+            <tr class="kern-table__row">
+                <th scope="row" class="kern-table__header">Antrag A</th>
+                <td class="kern-table__cell">In Bearbeitung</td>
+                <td class="kern-table__cell kern-table__cell--numeric">125,00 €</td>
+            </tr>
+            <tr class="kern-table__row">
+                <th scope="row" class="kern-table__header">Antrag B</th>
+                <td class="kern-table__cell">Abgeschlossen</td>
+                <td class="kern-table__cell kern-table__cell--numeric">49,90 €</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+{% endblock %}

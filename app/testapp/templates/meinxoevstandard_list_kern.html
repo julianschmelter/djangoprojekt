@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}MeinXOEVStandard Daten (mit KERN UX){% endblock %}
+
+{% block content %}
+<h1 class="kern-heading">Datensätze</h1>
+
+{% if daten %}
+    <table class="kern-table">
+        <caption class="kern-title">Übersicht der Datensätze</caption>
+
+        <thead class="kern-table__head">
+            <tr class="kern-table__row">
+                <th scope="col" class="kern-table__header">Lieferant</th>
+                <th scope="col" class="kern-table__header kern-table__header--numeric">Betrag</th>
+                <th scope="col" class="kern-table__header kern-table__header--numeric">Stückzahl</th>
+            </tr>
+        </thead>
+        <tbody class="kern-table__body">
+            {% for eintrag in daten %}
+            <tr class="kern-table__row">
+                <th scope="row" class="kern-table__header">{{ eintrag.lieferant }}</th>
+                <td class="kern-table__cell kern-table__cell--numeric">{{ eintrag.betrag }}</td>
+                <td class="kern-table__cell kern-table__cell--numeric">{{ eintrag.stueckzahl }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p class="kern-body">Keine Daten vorhanden.</p>
+{% endif %}
+{% endblock %}

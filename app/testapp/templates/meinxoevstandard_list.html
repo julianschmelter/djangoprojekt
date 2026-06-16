@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MeinXOEVStandard Daten</title>
+</head>
+<body>
+    <h1>Datensätze</h1>
+
+    {% if daten %}
+        <table border="1">
+            <tr>
+                <th>Lieferant</th>
+                <th>Betrag</th>
+                <th>Stückzahl</th>
+            </tr>
+            {% for eintrag in daten %}
+            <tr>
+                <td>{{ eintrag.lieferant }}</td>
+                <td>{{ eintrag.betrag }}</td>
+                <td>{{ eintrag.stueckzahl }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Keine Daten vorhanden.</p>
+    {% endif %}
+</body>
+</html>
